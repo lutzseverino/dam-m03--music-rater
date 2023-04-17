@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public enum Main {
     INSTANCE;
-    private static final Logger logger = LoggerFactory.getLogger(Snakelet.class);
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
 
     public static void main(String[] args) {
