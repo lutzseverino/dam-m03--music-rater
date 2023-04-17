@@ -1,6 +1,21 @@
 package cat.lasallegracia;
 
+import org.jline.terminal.Terminal;
+import org.jline.terminal.TerminalBuilder;
+
+import java.io.IOException;
+
 public class JavaSimpleMusicRater {
+    private final Terminal terminal;
+
+    {
+        try {
+            terminal = TerminalBuilder.terminal();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public void start() {
         String title = """
@@ -13,6 +28,6 @@ public class JavaSimpleMusicRater {
                                                           \s
                 """;
 
-        System.out.println(title);
+        terminal.writer().println(title);
     }
 }
