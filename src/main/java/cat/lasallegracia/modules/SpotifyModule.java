@@ -26,9 +26,11 @@ public class SpotifyModule extends AbstractModule {
         SpotifyClientConfig spotifyClientConfig = new Snakelet(configPath).read(SpotifyClientConfig.class);
 
         if (spotifyClientConfig == null) {
-            logger.error("Module can't provide: Config file \"" + configPath + "\" is either missing or malformed. Program will exit.");
+            logger.error("Can't provide: Required file \"" + configPath + "\" is either missing or malformed. Program will exit.");
             System.exit(1);
         }
+
+        System.out.println(spotifyClientConfig.getCLIENT_ID());
 
         SpotifyApi spotifyApi = new SpotifyApi.Builder()
                 .setClientId(spotifyClientConfig.getCLIENT_ID())
