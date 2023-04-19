@@ -1,33 +1,13 @@
 package cat.lasallegracia;
 
-import org.jline.terminal.Terminal;
-import org.jline.terminal.TerminalBuilder;
-
-import java.io.IOException;
+import cat.lasallegracia.i18n.ResourceBundleManager;
+import com.google.inject.Inject;
 
 public class JavaSimpleMusicRater {
-    private final Terminal terminal;
 
-    {
-        try {
-            terminal = TerminalBuilder.terminal();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
+    @Inject private ResourceBundleManager language;
 
     public void start() {
-        String title = """
-                                                          \s
-                       _|    _|_|_|  _|      _|  _|_|_|   \s
-                       _|  _|        _|_|  _|_|  _|    _| \s
-                       _|    _|_|    _|  _|  _|  _|_|_|   \s
-                 _|    _|        _|  _|      _|  _|    _| \s
-                   _|_|    _|_|_|    _|      _|  _|    _| \s
-                                                          \s
-                """;
-
-        terminal.writer().println(title);
+        System.out.println(language.getString("title"));
     }
 }
