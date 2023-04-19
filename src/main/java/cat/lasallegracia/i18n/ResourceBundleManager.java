@@ -1,16 +1,14 @@
 package cat.lasallegracia.i18n;
 
+import lombok.Setter;
+
 import java.io.File;
 import java.util.*;
 
 public class ResourceBundleManager {
     private static final String FOLDER = "/i18n/";
-
     private static final String BUNDLE_NAME = "i18n.jsmr";
-
-
-    // TODO: User should be able to change language
-    private ResourceBundle bundle;
+    @Setter private ResourceBundle bundle;
 
     public ResourceBundleManager(Locale language) {
         this.bundle = ResourceBundle.getBundle(BUNDLE_NAME, language);
@@ -18,6 +16,11 @@ public class ResourceBundleManager {
 
     public ResourceBundleManager() {
         this.bundle = ResourceBundle.getBundle(BUNDLE_NAME);
+    }
+
+
+    public ResourceBundle fetchBundle(Locale language) {
+        return ResourceBundle.getBundle(BUNDLE_NAME, language);
     }
 
     public String getString(String key) {
