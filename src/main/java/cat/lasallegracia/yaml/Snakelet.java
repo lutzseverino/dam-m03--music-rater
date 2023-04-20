@@ -2,7 +2,6 @@ package cat.lasallegracia.yaml;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import org.jline.utils.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.yaml.snakeyaml.DumperOptions;
@@ -44,7 +43,7 @@ public record Snakelet(String path) {
         try {
             writer = new FileWriter(path);
         } catch (IOException e) {
-            Log.error(this.getClass(), "Can't write file: \"" + path + "\"");
+            logger.error("Can't write file: \"" + path + "\"");
         }
 
         yaml.dump(object, writer);
