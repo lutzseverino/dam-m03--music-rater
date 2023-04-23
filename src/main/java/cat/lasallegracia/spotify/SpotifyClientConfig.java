@@ -10,9 +10,7 @@ import lombok.Setter;
  * The @JsonProperty annotation is required to map the config file
  * keys to the class fields with proper casing.
  */
-@Getter
-@Setter
-public class SpotifyClientConfig {
+@Getter @Setter public class SpotifyClientConfig {
     @JsonProperty("CLIENT_ID") private String CLIENT_ID;
     @JsonProperty("CLIENT_SECRET") private String CLIENT_SECRET;
 }

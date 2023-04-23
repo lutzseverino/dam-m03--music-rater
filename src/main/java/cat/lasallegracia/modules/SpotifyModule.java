@@ -15,22 +15,19 @@ import java.io.IOException;
 
 public class SpotifyModule extends AbstractModule {
     private static final Logger logger = LoggerFactory.getLogger(SpotifyModule.class);
-    private final String configPath;
+    private final String path;
 
-
-    public SpotifyModule(String configPath) {
-        this.configPath = configPath;
+    public SpotifyModule(String path) {
+        this.path = path;
     }
 
     @Provides public ReadOnlySpotifyService provideReadOnlySpotifyService() {
-        SpotifyClientConfig spotifyClientConfig = new Snakelet(configPath).read(SpotifyClientConfig.class);
+        SpotifyClientConfig spotifyClientConfig = new Snakelet(path).read(SpotifyClientConfig.class);
 
         if (spotifyClientConfig == null) {
-            logger.error("Can't provide: Required file \"" + configPath + "\" is either missing or malformed. Program will exit.");
+            logger.error("Can't provide: Required file \"" + path + "\" is either missing or malformed. Program will exit.");
             System.exit(1);
         }
-
-        System.out.println(spotifyClientConfig.getCLIENT_ID());
 
         SpotifyApi spotifyApi = new SpotifyApi.Builder()
                 .setClientId(spotifyClientConfig.getCLIENT_ID())
